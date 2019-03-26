@@ -234,7 +234,7 @@
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(51, 48);
             this.btnLimpar.TabIndex = 18;
-            this.btnLimpar.Text = "CE";
+            this.btnLimpar.Text = "C";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
