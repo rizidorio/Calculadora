@@ -48,6 +48,7 @@
             this.btnPorcentagem = new System.Windows.Forms.Button();
             this.lblDisplay = new System.Windows.Forms.Label();
             this.lblResultado = new System.Windows.Forms.Label();
+            this.btnApagar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn7
@@ -158,6 +159,7 @@
             this.btnVirgula.TabIndex = 12;
             this.btnVirgula.Text = ",";
             this.btnVirgula.UseVisualStyleBackColor = true;
+            this.btnVirgula.Click += new System.EventHandler(this.btnVirgula_Click);
             // 
             // btn0
             // 
@@ -190,6 +192,7 @@
             this.btnSubtrair.TabIndex = 15;
             this.btnSubtrair.Text = "-";
             this.btnSubtrair.UseVisualStyleBackColor = true;
+            this.btnSubtrair.Click += new System.EventHandler(this.btnSubtrair_Click);
             // 
             // btnDividir
             // 
@@ -200,6 +203,7 @@
             this.btnDividir.TabIndex = 14;
             this.btnDividir.Text = "/";
             this.btnDividir.UseVisualStyleBackColor = true;
+            this.btnDividir.Click += new System.EventHandler(this.btnDividir_Click);
             // 
             // btnMultiplicar
             // 
@@ -210,13 +214,14 @@
             this.btnMultiplicar.TabIndex = 13;
             this.btnMultiplicar.Text = "*";
             this.btnMultiplicar.UseVisualStyleBackColor = true;
+            this.btnMultiplicar.Click += new System.EventHandler(this.btnMultiplicar_Click);
             // 
             // btnIgual
             // 
             this.btnIgual.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIgual.Location = new System.Drawing.Point(260, 217);
+            this.btnIgual.Location = new System.Drawing.Point(260, 271);
             this.btnIgual.Name = "btnIgual";
-            this.btnIgual.Size = new System.Drawing.Size(51, 102);
+            this.btnIgual.Size = new System.Drawing.Size(51, 48);
             this.btnIgual.TabIndex = 19;
             this.btnIgual.Text = "=";
             this.btnIgual.UseVisualStyleBackColor = true;
@@ -231,16 +236,18 @@
             this.btnLimpar.TabIndex = 18;
             this.btnLimpar.Text = "CE";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnPorcentagem
             // 
             this.btnPorcentagem.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPorcentagem.Location = new System.Drawing.Point(260, 163);
+            this.btnPorcentagem.Location = new System.Drawing.Point(260, 217);
             this.btnPorcentagem.Name = "btnPorcentagem";
             this.btnPorcentagem.Size = new System.Drawing.Size(51, 48);
             this.btnPorcentagem.TabIndex = 17;
             this.btnPorcentagem.Text = "%";
             this.btnPorcentagem.UseVisualStyleBackColor = true;
+            this.btnPorcentagem.Click += new System.EventHandler(this.btnPorcentagem_Click);
             // 
             // lblDisplay
             // 
@@ -254,6 +261,7 @@
             this.lblDisplay.Size = new System.Drawing.Size(303, 35);
             this.lblDisplay.TabIndex = 20;
             this.lblDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDisplay.TextChanged += new System.EventHandler(this.lblDisplay_TextChanged);
             // 
             // lblResultado
             // 
@@ -267,6 +275,17 @@
             this.lblResultado.TabIndex = 20;
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnApagar
+            // 
+            this.btnApagar.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagar.Location = new System.Drawing.Point(260, 163);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(51, 48);
+            this.btnApagar.TabIndex = 18;
+            this.btnApagar.Text = "<--";
+            this.btnApagar.UseVisualStyleBackColor = true;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
             // frmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -275,6 +294,7 @@
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.lblDisplay);
             this.Controls.Add(this.btnIgual);
+            this.Controls.Add(this.btnApagar);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnPorcentagem);
             this.Controls.Add(this.btnSomar);
@@ -324,6 +344,7 @@
         private System.Windows.Forms.Button btnPorcentagem;
         private System.Windows.Forms.Label lblDisplay;
         private System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.Button btnApagar;
     }
 }
 
