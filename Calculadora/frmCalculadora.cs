@@ -12,6 +12,8 @@ namespace Calculadora
 {
     public partial class frmCalculadora : Form
     {
+
+        #region variáveis e inicialização
         private double n1 = 0;
         private double n2 = 0;
         private double resultado = 0;
@@ -19,10 +21,12 @@ namespace Calculadora
 
         public frmCalculadora()
         {
-            InitializeComponent();
-            
+            InitializeComponent();   
         }
 
+        #endregion
+
+        #region botões números, vírgula, backspace e limpar
         private void btn0_Click(object sender, EventArgs e)
         {
             if (lblDisplay.Text == string.Empty)
@@ -288,6 +292,7 @@ namespace Calculadora
             int x = lblDisplay.Text.IndexOf(",");
 
             if (x >= 0) return;
+            else if(lblDisplay.Text.Length == 0) lblDisplay.Text = "0,";
             else lblDisplay.Text += ",";
         }
 
@@ -310,29 +315,45 @@ namespace Calculadora
             }
         }
 
+        #endregion
+
+        #region botões operações
         private void btnSomar_Click(object sender, EventArgs e)
         {
             if(resultado == 0)
             {
                 try
                 {
-                    n1 = Convert.ToDouble(lblDisplay.Text);
-                    lblResultado.Text = lblDisplay.Text + " + ";
-                    lblDisplay.Text = string.Empty;
-                    sinal = 1;
+                    if (mudarSinal())
+                    {
+                        lblResultado.Text = n1.ToString() + " " + btnSomar.Text;
+                        sinal = 1;   
+                    }
+                    else
+                    {
+                        n1 = Convert.ToDouble(lblDisplay.Text);
+                        lblResultado.Text = lblDisplay.Text + " " + btnSomar.Text;
+                        lblDisplay.Text = string.Empty;
+                        sinal = 1;
+                    }
                 }
                 catch (Exception ex)
                 {
                     n1 = 0;
-                    lblResultado.Text = n1.ToString() + " + ";
+                    lblResultado.Text = n1.ToString() + " " + btnSomar.Text;
                     lblDisplay.Text = string.Empty;
                     sinal = 1;
                 }   
             }
+            else if (mudarSinal())
+            {
+                lblResultado.Text = n1.ToString() + " " + btnSomar.Text;
+                sinal = 1;
+            }
             else
             {
                 n1 = Convert.ToDouble(lblResultado.Text.Remove(0, 2));
-                lblResultado.Text = lblResultado.Text.Replace("= ", "") + " + ";
+                lblResultado.Text = lblResultado.Text.Remove(0, 2) + " " + btnSomar.Text;
                 lblDisplay.Text = string.Empty;
                 sinal = 1;
             }
@@ -344,23 +365,36 @@ namespace Calculadora
             {
                 try
                 {
-                    n1 = Convert.ToDouble(lblDisplay.Text);
-                    lblResultado.Text = lblDisplay.Text + " - ";
-                    lblDisplay.Text = string.Empty;
-                    sinal = 2;
+                    if (mudarSinal())
+                    {
+                        lblResultado.Text = n1.ToString() + " " + btnSubtrair.Text;
+                        sinal = 2;
+                    }
+                    else
+                    {
+                        n1 = Convert.ToDouble(lblDisplay.Text);
+                        lblResultado.Text = lblDisplay.Text + " " + btnSubtrair.Text;
+                        lblDisplay.Text = string.Empty;
+                        sinal = 2;
+                    }
                 }
                 catch (Exception ex)
                 {
                     n1 = 0;
-                    lblResultado.Text = n1.ToString() + " - ";
+                    lblResultado.Text = n1.ToString() + " " + btnSubtrair.Text;
                     lblDisplay.Text = string.Empty;
                     sinal = 2;
                 }
             }
+            else if (mudarSinal())
+            {
+                lblResultado.Text = n1.ToString() + " " + btnSubtrair.Text;
+                sinal = 2;
+            }
             else
             {
                 n1 = Convert.ToDouble(lblResultado.Text.Remove(0, 2));
-                lblResultado.Text = lblResultado.Text.Replace("= ", "") + " - ";
+                lblResultado.Text = lblResultado.Text.Remove(0, 2) + " " + btnSubtrair.Text;
                 lblDisplay.Text = string.Empty;
                 sinal = 2;
             }
@@ -372,23 +406,36 @@ namespace Calculadora
             {
                 try
                 {
-                    n1 = Convert.ToDouble(lblDisplay.Text);
-                    lblResultado.Text = lblDisplay.Text + " x ";
-                    lblDisplay.Text = string.Empty;
-                    sinal = 3;
+                    if (mudarSinal())
+                    {
+                        lblResultado.Text = n1.ToString() + " " + btnMultiplicar.Text;
+                        sinal = 3;
+                    }
+                    else
+                    {
+                        n1 = Convert.ToDouble(lblDisplay.Text);
+                        lblResultado.Text = lblDisplay.Text + " " + btnMultiplicar.Text;
+                        lblDisplay.Text = string.Empty;
+                        sinal = 3;
+                    }
                 }
                 catch (Exception ex)
                 {
                     n1 = 0;
-                    lblResultado.Text = n1.ToString() + " x ";
+                    lblResultado.Text = n1.ToString() + " " + btnMultiplicar.Text;
                     lblDisplay.Text = string.Empty;
                     sinal = 3;
                 }
             }
+            else if (mudarSinal())
+            {
+                lblResultado.Text = n1.ToString() + " " + btnMultiplicar.Text;
+                sinal = 3;
+            }
             else
             {
                 n1 = Convert.ToDouble(lblResultado.Text.Remove(0, 2));
-                lblResultado.Text = lblResultado.Text.Replace("= ", "") + " x ";
+                lblResultado.Text = lblResultado.Text.Remove(0, 2) + " " + btnMultiplicar.Text;
                 lblDisplay.Text = string.Empty;
                 sinal = 3;
             }
@@ -400,27 +447,44 @@ namespace Calculadora
             {
                 try
                 {
-                    n1 = Convert.ToDouble(lblDisplay.Text);
-                    lblResultado.Text = lblDisplay.Text + " / ";
-                    lblDisplay.Text = string.Empty;
-                    sinal = 4;
+                    if (mudarSinal())
+                    {
+                        lblResultado.Text = n1.ToString() + " " + btnDividir.Text;
+                        sinal = 4;
+                    }
+                    else
+                    {
+                        n1 = Convert.ToDouble(lblDisplay.Text);
+                        lblResultado.Text = lblDisplay.Text + " " + btnDividir.Text;
+                        lblDisplay.Text = string.Empty;
+                        sinal = 4;
+                    }
                 }
                 catch (Exception ex)
                 {
                     n1 = 0;
-                    lblResultado.Text = n1.ToString() + " / ";
+                    lblResultado.Text = n1.ToString() + " " + btnDividir.Text;
                     lblDisplay.Text = string.Empty;
                     sinal = 4;
                 }
             }
+            else if (mudarSinal())
+            {
+                lblResultado.Text = n1.ToString() + " " + btnDividir.Text;
+                sinal = 4;
+            }
             else
             {
                 n1 = Convert.ToDouble(lblResultado.Text.Remove(0, 2));
-                lblResultado.Text = lblResultado.Text.Replace("= ", "") + " x ";
+                lblResultado.Text = lblResultado.Text.Remove(0, 2) + " " + btnDividir.Text;
                 lblDisplay.Text = string.Empty;
                 sinal = 4;
             }
         }
+
+        #endregion
+
+        #region porcentagem
 
         private void btnPorcentagem_Click(object sender, EventArgs e)
         {
@@ -458,6 +522,9 @@ namespace Calculadora
             sinal = 0;
         }
 
+        #endregion
+
+        #region botão igual
         private void btnIgual_Click(object sender, EventArgs e)
         {
             try
@@ -515,6 +582,10 @@ namespace Calculadora
             }
         }
 
+        #endregion
+
+        #region textchanged e métodos
+
         private void lblDisplay_TextChanged(object sender, EventArgs e)
         {
             int x = lblDisplay.Text.Length-1;
@@ -558,5 +629,20 @@ namespace Calculadora
                 lblResultado.Text = "= " + resultado.ToString("N0");
             }
         }
+
+        private bool mudarSinal()
+        {
+            if (lblResultado.Text.Contains("-") || lblResultado.Text.Contains("x") || lblResultado.Text.Contains("/") || lblResultado.Text.Contains("+"))
+            {
+                lblResultado.Text = lblResultado.Text.Substring(0, lblResultado.Text.Length - 2);
+                n1 = Convert.ToDouble(lblResultado.Text.Replace("= ", ""));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

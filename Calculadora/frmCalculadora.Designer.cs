@@ -212,7 +212,7 @@
             this.btnMultiplicar.Name = "btnMultiplicar";
             this.btnMultiplicar.Size = new System.Drawing.Size(51, 48);
             this.btnMultiplicar.TabIndex = 13;
-            this.btnMultiplicar.Text = "*";
+            this.btnMultiplicar.Text = "x";
             this.btnMultiplicar.UseVisualStyleBackColor = true;
             this.btnMultiplicar.Click += new System.EventHandler(this.btnMultiplicar_Click);
             // 
